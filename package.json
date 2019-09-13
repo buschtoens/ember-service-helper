@@ -1,13 +1,19 @@
 {
   "name": "ember-service-helper",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Simple template helper to inject services into templates.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "helper",
+    "inject",
+    "service",
+    "template",
+    "only",
+    "component"
   ],
-  "repository": "",
+  "repository": "buschtoens/ember-service-helper",
   "license": "MIT",
-  "author": "",
+  "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -24,16 +30,16 @@
     "ember-cli-babel": "^7.7.3"
   },
   "devDependencies": {
+    "@clark/eslint-config-ember": "^1.14.1",
+    "@clark/eslint-config-node": "^1.14.1",
     "@ember/optional-features": "^0.7.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.12.0",
     "ember-cli-dependency-checker": "^3.1.0",
-    "ember-cli-eslint": "^5.1.0",
     "ember-cli-htmlbars": "^3.0.1",
     "ember-cli-htmlbars-inline-precompile": "^2.1.0",
     "ember-cli-inject-live-reload": "^1.8.2",
     "ember-cli-sri": "^2.1.1",
-    "ember-cli-template-lint": "^1.0.0-beta.1",
     "ember-cli-uglify": "^2.1.0",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.0",
@@ -43,9 +49,9 @@
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.12.0",
     "ember-source-channel-url": "^1.1.0",
+    "ember-template-lint": "^1.5.3",
     "ember-try": "^1.0.0",
-    "eslint-plugin-ember": "^6.2.0",
-    "eslint-plugin-node": "^9.0.1",
+    "eslint": "^6.3.0",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.8.4"
   },

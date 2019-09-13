@@ -1,38 +1,33 @@
-ember-service-helper
-==============================================================================
+# ember-service-helper
 
-[Short description of the addon.]
+[![Build Status](https://travis-ci.org/buschtoens/ember-service-helper.svg)](https://travis-ci.org/buschtoens/ember-service-helper)
+[![npm version](https://badge.fury.io/js/ember-service-helper.svg)](http://badge.fury.io/js/ember-service-helper)
+[![Download Total](https://img.shields.io/npm/dt/ember-service-helper.svg)](http://badge.fury.io/js/ember-service-helper)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-service-helper.svg)](https://emberobserver.com/addons/ember-service-helper)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![dependencies](https://img.shields.io/david/buschtoens/ember-service-helper.svg)](https://david-dm.org/buschtoens/ember-service-helper)
+[![devDependencies](https://img.shields.io/david/dev/buschtoens/ember-service-helper.svg)](https://david-dm.org/buschtoens/ember-service-helper)
 
+Simple template helper to inject services into templates.
 
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v3.4 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
-
-
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-service-helper
 ```
 
+## Usage
 
-Usage
-------------------------------------------------------------------------------
+Example using [`ember-responsive`](https://github.com/freshbooks/ember-responsive).
 
-[Longer description of how to use the addon in apps.]
+```hbs
+{{#if (get (service "breakpoints") "isDesktop")}}
+  Desktop breakpoint
+{{else}}
+  Mobile breakpoint
+{{/if}}
+```
 
+## Related
 
-Contributing
-------------------------------------------------------------------------------
-
-See the [Contributing](CONTRIBUTING.md) guide for details.
-
-
-License
-------------------------------------------------------------------------------
-
-This project is licensed under the [MIT License](LICENSE.md).
+- [Pre-RFC 543: Ability to inject service into Template Only component](https://github.com/emberjs/rfcs/issues/543)
