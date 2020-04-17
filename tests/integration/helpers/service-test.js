@@ -9,7 +9,7 @@ import Ember from 'ember';
 
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Helpers | Service', function(hooks) {
+module('Integration | Helpers | Service', function (hooks) {
   setupRenderingTest(hooks);
 
   const { onerror } = Ember;
@@ -17,7 +17,7 @@ module('Integration | Helpers | Service', function(hooks) {
     Ember.onerror = onerror;
   });
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.owner.register(
       'service:some-service',
       class SomeService extends Service {
@@ -31,7 +31,7 @@ module('Integration | Helpers | Service', function(hooks) {
     );
   });
 
-  test('it allows you to access a property on a service if it exists', async function(assert) {
+  test('it allows you to access a property on a service if it exists', async function (assert) {
     await render(hbs`{{get (service "some-service") "fruitType"}}`);
     assert.dom().includesText('Banana');
 
@@ -45,7 +45,7 @@ module('Integration | Helpers | Service', function(hooks) {
     assert.dom().doesNotIncludeText('I am here');
   });
 
-  test('it throws an error when trying to access a service that does not exist', async function(assert) {
+  test('it throws an error when trying to access a service that does not exist', async function (assert) {
     assert.expect(1);
 
     Ember.onerror = error =>
