@@ -1,6 +1,6 @@
 # ember-service-helper
 
-[![Build Status](https://travis-ci.org/buschtoens/ember-service-helper.svg)](https://travis-ci.org/buschtoens/ember-service-helper)
+[![CI](https://github.com/buschtoens/ember-service-helper/workflows/CI/badge.svg)](https://github.com/buschtoens/ember-service-helper/actions)
 [![npm version](https://badge.fury.io/js/ember-service-helper.svg)](http://badge.fury.io/js/ember-service-helper)
 [![Download Total](https://img.shields.io/npm/dt/ember-service-helper.svg)](http://badge.fury.io/js/ember-service-helper)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-service-helper.svg)](https://emberobserver.com/addons/ember-service-helper)
