@@ -53,7 +53,7 @@ jobs:
         with:
           node-version: 8
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile --ignore-engine
+        run: yarn install --frozen-lockfile --ignore-engines
       - name: Browser Tests
         run: yarn test
 
