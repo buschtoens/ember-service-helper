@@ -14,10 +14,11 @@
   "repository": "buschtoens/ember-service-helper",
   "license": "MIT",
   "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
+  "files": [
+    "addon/",
+    "app/",
+    "index.js"
+  ],
   "scripts": {
     "build": "ember build",
     "lint:hbs": "ember-template-lint .",
