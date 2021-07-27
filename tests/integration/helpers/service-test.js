@@ -1,33 +1,27 @@
-import { render } from '@ember/test-helpers';
+import { render, setupOnerror, resetOnerror } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 import { set } from '@ember/object';
 import { run } from '@ember/runloop';
 import Service from '@ember/service';
-import Ember from 'ember';
 
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Helpers | Service', function (hooks) {
   setupRenderingTest(hooks);
 
-  const { onerror } = Ember;
   hooks.afterEach(() => {
-    Ember.onerror = onerror;
+    resetOnerror();
   });
 
   hooks.beforeEach(function () {
     this.owner.register(
       'service:some-service',
       class SomeService extends Service {
-        init() {
-          super.init();
-
-          this.isTrue = true;
-          this.fruitType = 'Banana';
-        }
-      }
+        isTrue = true;
+        fruitType = 'Banana';
+      },
     );
   });
 
@@ -36,7 +30,7 @@ module('Integration | Helpers | Service', function (hooks) {
     assert.dom().includesText('Banana');
 
     await render(
-      hbs`{{if (get (service "some-service") "isTrue") "I am here"}}`
+      hbs`{{if (get (service "some-service") "isTrue") "I am here"}}`,
     );
     assert.dom().includesText('I am here');
 
@@ -48,11 +42,12 @@ module('Integration | Helpers | Service', function (hooks) {
   test('it throws an error when trying to access a service that does not exist', async function (assert) {
     assert.expect(1);
 
-    Ember.onerror = error =>
-      assert.equal(
+    setupOnerror(error =>
+      assert.strictEqual(
         error.message,
-        "Assertion Failed: The service 'not-a-service' does not exist"
-      );
+        "Assertion Failed: The service 'not-a-service' does not exist",
+      ),
+    );
 
     await render(hbs`{{service "not-a-service"}}`);
   });
