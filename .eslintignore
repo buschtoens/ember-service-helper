@@ -13,6 +13,8 @@
 # misc
 /coverage/
 !.*
+!.eslintrc.js
+.vscode/
 
 # ember-try
 /.node_modules.ember-try/
