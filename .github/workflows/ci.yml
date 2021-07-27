@@ -25,14 +25,14 @@ env:
 jobs:
   test-locked-deps:
     name: Locked Deps
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 16
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Lint JS
@@ -44,22 +44,22 @@ jobs:
 
   test-old-dependencies:
     name: Oldest Supported Env
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 8
       - name: Install Dependencies
         run: yarn install --frozen-lockfile --ignore-engines
       - name: Browser Tests
-        run: yarn test
+        run: yarn test --ignore-engines
 
   test-try:
     name: Ember Try
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs: [test-locked-deps]
     strategy:
       matrix:
@@ -73,11 +73,11 @@ jobs:
           - ember-canary
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 16
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Try Scenario
