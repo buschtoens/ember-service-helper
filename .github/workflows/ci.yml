@@ -55,7 +55,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile --ignore-engines
       - name: Browser Tests
-        run: yarn test --ignore-engines
+        run: $(yarn bin ember) test
 
   test-try:
     name: Ember Try
