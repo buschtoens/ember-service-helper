@@ -1,29 +1,14 @@
-# This workflow is largely based on
-# https://github.com/salsify/ember-css-modules/blob/master/.github/workflows/ci.yml
+name: Pull Requests
 
-name: CI
-
-# These trigger patterns courtesy of https://github.com/broccolijs/broccoli/pull/436
 on:
-  push:
-    # filtering branches here prevents duplicate builds from pull_request and push
-    branches:
-      - main
-      - "v*"
-    # always run CI for tags
-    tags:
-      - "*"
-
-  # early issue detection: run CI weekly on Sundays
-  schedule:
-    - cron: "0 6 * * 0"
+  pull_request:
 
 env:
   CI: true
 
 jobs:
-  test-floating-deps:
-    name: Floating Deps
+  test-locked-deps:
+    name: Locked Deps
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
@@ -33,7 +18,7 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Lint JS
         run: yarn lint:js
       - name: Lint Handlebars
@@ -52,14 +37,13 @@ jobs:
         with:
           node-version: 10
       - name: Install Dependencies
-        run: yarn install --ignore-engines
+        run: yarn install --frozen-lockfile --ignore-engines
       - name: Browser Tests
         run: $(yarn bin ember) test
 
   test-try:
     name: Ember Try
     runs-on: ubuntu-20.04
-    needs: [test-locked-deps]
     strategy:
       fail-fast: false
       matrix:
@@ -79,6 +63,6 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Try Scenario
         run: yarn ember try:one ${{ matrix.scenario }}
