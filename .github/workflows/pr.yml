@@ -54,7 +54,8 @@ jobs:
           - ember-lts-3.24
           - ember-release
           - ember-beta
-          - ember-canary
+          # https://github.com/emberjs/ember-test-helpers/pull/1066
+          # - ember-canary
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
