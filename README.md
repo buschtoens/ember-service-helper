@@ -12,13 +12,25 @@ Simple template helper to inject services into templates.
 
 ## Installation
 
-```
+```sh
 ember install ember-service-helper
 ```
 
 ## Usage
 
-Example using [`ember-responsive`](https://github.com/freshbooks/ember-responsive).
+There are two ways to invoke the `{{service}}` helper.
+
+- **`{{service serviceName}}`** — Returns the service itself.<br>
+  Like calling ```owner.lookup(`service:${serviceName}`)```
+- **`{{service serviceName methodName}}`** — Returns the method, bound to the instance.
+
+### Properties
+
+#### Getting Properties
+
+Example using the built-in `{{get}}` helper and
+[`ember-responsive`](https://github.com/freshbooks/ember-responsive). Note that
+`{{get}}` returns a bound reference.
 
 ```hbs
 {{#if (get (service "breakpoints") "isDesktop")}}
@@ -26,6 +38,43 @@ Example using [`ember-responsive`](https://github.com/freshbooks/ember-responsiv
 {{else}}
   Mobile breakpoint
 {{/if}}
+```
+
+#### Setting Properties
+
+Example using [`ember-set-helper`](https://github.com/pzuraq/ember-set-helper).
+
+```hbs
+<ColorPicker @update={{set (service "preferences") "favoriteColor"}}>
+```
+
+### Methods
+
+Example using the
+[`{{pick}}` helper from `ember-composable-helpers`](https://github.com/DockYard/ember-composable-helpers#pick)
+to get the `event.target.checked` property.
+
+```hbs
+<label>
+  Enable dark mode
+  <input
+    type="checkbox"
+    checked={{get (service "theme") "isDark"}}
+    {{on "input" (pick "target.checked" (service "theme" "toggleDarkMode"))}}
+  >
+</label>
+```
+
+```ts
+export default class ThemeService extends Service {
+  @tracked isDark = false;
+
+  toggleDarkMode(newValue = !this.isDark) {
+    // Even though this method isn't using `@action`, the `{{service}}` helper
+    // binds it to the service instance.
+    this.isDark = newValue;
+  }
+}
 ```
 
 ## Related

@@ -1,4 +1,5 @@
 import { render, setupOnerror, resetOnerror } from '@ember/test-helpers';
+import click from '@ember/test-helpers/dom/click';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
@@ -21,6 +22,10 @@ module('Integration | Helpers | Service', function (hooks) {
       class SomeService extends Service {
         isTrue = true;
         fruitType = 'Banana';
+
+        setFruitType(type) {
+          set(this, 'fruitType', type);
+        }
       },
     );
   });
@@ -50,5 +55,20 @@ module('Integration | Helpers | Service', function (hooks) {
     );
 
     await render(hbs`{{service "not-a-service"}}`);
+  });
+
+  test('it exposes and auto-binds methods', async function (assert) {
+    await render(hbs`
+      <button
+        type="button"
+        {{on "click" (fn (service "some-service" "setFruitType") "Apple")}}
+      >
+        {{get (service "some-service") "fruitType"}}
+      </button>
+    `);
+    assert.dom('button').hasText('Banana');
+
+    await click('button');
+    assert.dom('button').hasText('Apple');
   });
 });
