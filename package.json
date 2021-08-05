@@ -31,7 +31,7 @@
     "ember-cli-babel": "^7.26.6"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.14.7",
+    "@babel/eslint-parser": "^7.15.0",
     "@clark/eslint-config-ember": "^2.2.0",
     "@clark/eslint-config-node": "^2.2.0",
     "@clark/prettier-config": "^2.2.0",
