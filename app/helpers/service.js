@@ -1,1 +1,1 @@
-export { default, service } from 'ember-service-helper/helpers/service';
+export { default } from 'ember-service-helper/helpers/service';
