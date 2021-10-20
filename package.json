@@ -1,6 +1,6 @@
 {
   "name": "ember-service-helper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple template helper to inject services into templates.",
   "keywords": [
     "ember-addon",
