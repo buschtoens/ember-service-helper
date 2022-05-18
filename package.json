@@ -36,7 +36,7 @@
     "@clark/eslint-config-node": "^2.2.0",
     "@clark/prettier-config": "^2.2.0",
     "@ember/optional-features": "^2.0.0",
-    "@ember/test-helpers": "^2.2.8",
+    "@ember/test-helpers": "^2.8.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "broccoli-asset-rev": "^3.0.0",
